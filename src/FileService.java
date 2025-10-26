@@ -19,5 +19,7 @@ public class FileService {
         } else if (mode.equalsIgnoreCase("BRUTE_FORCE")) {
             suffix = "[BRUTE_FORCED]";
         }
+        Path newFile = originalPath.getParent().resolve(name + suffix + extension);
+        Files.writeString(newFile, text);
     }
 }
