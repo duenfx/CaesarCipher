@@ -10,4 +10,15 @@ public class BruteForce {
         }
         return matches >= 3;
     }
+    public String bruteForceDecrypt(String encryptedText) {
+        char[] alphabet = Encrypt.getAlphabet();
+        for (int key = 1; key < alphabet.length; key++) {
+            String decrypted = Decrypt.decryptText(encryptedText, key);
+            if (isReadable(decrypted)) {
+                System.out.println("Знайдено можливий ключ: " + key);
+                return decrypted;
+            }
+        }
+        return "Brute force не зміг знайти зрозумілий текст.";
+    }
 }
